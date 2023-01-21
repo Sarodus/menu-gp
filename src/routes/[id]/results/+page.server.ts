@@ -1,9 +1,9 @@
-import type { PageServerLoad, Actions } from './$types';
+import type { PageServerLoad } from './$types';
 import { supabase } from '$lib/supabaseClient';
 import { redirect } from '@sveltejs/kit';
 import type { Room, User } from '$lib/types';
 
-export const load = (async ({ params, locals }) => {
+export const load = (async ({ params }) => {
 	const roomQuery = await supabase
 		.from('menugp-room')
 		.select('title, subtitle, description, submit_text, name_text')
@@ -24,6 +24,6 @@ export const load = (async ({ params, locals }) => {
 
 	return {
 		...room,
-		users: [...users, ...users, ...users, ...users]
+		users
 	};
 }) satisfies PageServerLoad;

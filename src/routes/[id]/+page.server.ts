@@ -18,7 +18,8 @@ export const load = (async ({ params, locals }) => {
 	const ingredientsQuery = await supabase
 		.from('menugp-ingredient')
 		.select('title, options, type, required')
-		.eq('room_id', params.id);
+		.eq('room_id', params.id)
+		.order('id', { ascending: true });
 
 	const ingredients = ingredientsQuery.data as Ingredient[];
 

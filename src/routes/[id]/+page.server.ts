@@ -32,7 +32,7 @@ export const load = (async ({ params, locals }) => {
 	let name = '';
 	let currentIngredients: Record<string, string[]> | undefined;
 
-	if (!currentQuery.error) {
+	if (currentQuery.data?.length) {
 		name = currentQuery.data[0].name;
 		currentIngredients = currentQuery.data[0].ingredients;
 	}
